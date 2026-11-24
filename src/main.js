@@ -148,7 +148,8 @@ byId('letter-next').addEventListener('click', () => {
   showLetter(letterIndex === content.letters.length - 1 ? 0 : letterIndex + 1);
 });
 
-// Music starts only after an explicit tap, as mobile browsers may block autoplay.
+// The title screen stays visible until a visitor tap successfully starts the
+// song. This deliberate gesture is needed by browsers that block audible autoplay.
 const audio = byId('birthday-audio');
 const musicToggle = byId('music-toggle');
 const audioStatus = byId('audio-status');
@@ -164,10 +165,13 @@ async function startMusic() {
   try {
     await audio.play();
     setMusicState(true);
-    audioStatus.textContent = 'Birthday music is playing.';
+    audioStatus.hidden = true;
+    return true;
   } catch {
     setMusicState(false);
-    audioStatus.textContent = 'Music could not start. Use the music button to try again.';
+    audioStatus.textContent = 'The song did not start yet. Tap “Open your surprise” to try again.';
+    audioStatus.hidden = false;
+    return false;
   }
 }
 musicToggle.addEventListener('click', () => {
@@ -176,9 +180,16 @@ musicToggle.addEventListener('click', () => {
 });
 audio.addEventListener('pause', () => setMusicState(false));
 audio.addEventListener('play', () => setMusicState(true));
-byId('start-surprise').addEventListener('click', () => {
-  startMusic();
-  document.querySelector('#memories').scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });
+byId('start-surprise').addEventListener('click', async () => {
+  const playbackStarted = await startMusic();
+  if (!playbackStarted) return;
+
+  byId('welcome-screen').hidden = true;
+  byId('site-header').hidden = false;
+  byId('main').hidden = false;
+  byId('site-footer').hidden = false;
+  byId('skip-link').href = '#main';
+  byId('hero-title').focus({ preventScroll: true });
 });
 
 // A tiny, short-lived confetti burst; skipped for reduced-motion preferences.

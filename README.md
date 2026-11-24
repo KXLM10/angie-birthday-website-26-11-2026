@@ -21,7 +21,7 @@ pnpm build
 pnpm preview
 ```
 
-The production site is generated in `dist/`. The music starts only after a user action because browsers commonly prevent pages from playing audible media on initial load.
+The production site is generated in `dist/`. The first screen shows the birthday title, **Open your surprise** button, and a brief hint. Tapping it starts the birthday song; the personal message and the rest of the story appear only after playback begins. This user gesture is necessary because browsers commonly block audible autoplay before interaction. If playback is denied, the title screen stays visible and offers a retry.
 
 ## Project map
 
