@@ -148,8 +148,8 @@ byId('letter-next').addEventListener('click', () => {
   showLetter(letterIndex === content.letters.length - 1 ? 0 : letterIndex + 1);
 });
 
-// Attempt audible autoplay when the page opens. Browsers may block this until a
-// user gesture, so show a visible prompt and keep the header play button ready.
+// The title screen stays visible until a visitor tap successfully starts the
+// song. This deliberate gesture is needed by browsers that block audible autoplay.
 const audio = byId('birthday-audio');
 const musicToggle = byId('music-toggle');
 const audioStatus = byId('audio-status');
@@ -166,10 +166,12 @@ async function startMusic() {
     await audio.play();
     setMusicState(true);
     audioStatus.hidden = true;
+    return true;
   } catch {
     setMusicState(false);
-    audioStatus.textContent = 'If the birthday song did not start, tap “Play music” in the header. Your browser may require a tap before it allows sound.';
+    audioStatus.textContent = 'The song did not start yet. Tap “Open your surprise” to try again.';
     audioStatus.hidden = false;
+    return false;
   }
 }
 musicToggle.addEventListener('click', () => {
@@ -178,10 +180,16 @@ musicToggle.addEventListener('click', () => {
 });
 audio.addEventListener('pause', () => setMusicState(false));
 audio.addEventListener('play', () => setMusicState(true));
-startMusic();
-byId('start-surprise').addEventListener('click', () => {
-  startMusic();
-  document.querySelector('#memories').scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });
+byId('start-surprise').addEventListener('click', async () => {
+  const playbackStarted = await startMusic();
+  if (!playbackStarted) return;
+
+  byId('welcome-screen').hidden = true;
+  byId('site-header').hidden = false;
+  byId('main').hidden = false;
+  byId('site-footer').hidden = false;
+  byId('skip-link').href = '#main';
+  byId('hero-title').focus({ preventScroll: true });
 });
 
 // A tiny, short-lived confetti burst; skipped for reduced-motion preferences.

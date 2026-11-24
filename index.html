@@ -8,9 +8,23 @@
     <title>For Angie, With Love</title>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to the birthday story</a>
+    <a class="skip-link" id="skip-link" href="#welcome-screen">Skip to the birthday story</a>
 
-    <header class="site-header">
+    <section class="intro-screen" id="welcome-screen" aria-labelledby="intro-title">
+      <div class="intro-content">
+        <p class="eyebrow intro-eyebrow">a little surprise, made with love</p>
+        <h1 class="intro-title" id="intro-title">Happy 21st Birthday<br /><em>Angie My Love</em></h1>
+        <button class="button button-primary intro-button" id="start-surprise" type="button">
+          <span>Open your surprise</span><span class="button-arrow" aria-hidden="true">↘</span>
+        </button>
+        <p class="intro-hint">Tap to begin the birthday song and your story.</p>
+        <p class="audio-status" id="audio-status" role="status" aria-live="polite" hidden></p>
+        <span class="intro-heart intro-heart-one" aria-hidden="true">♡</span>
+        <span class="intro-heart intro-heart-two" aria-hidden="true">✳</span>
+      </div>
+    </section>
+
+    <header class="site-header" id="site-header" hidden>
       <a class="wordmark" href="#welcome" aria-label="For Angie, with love — home">
         <span class="wordmark-heart" aria-hidden="true">♥</span>
         <span>for Angie, with love</span>
@@ -26,21 +40,16 @@
       </button>
     </header>
 
-    <main id="main">
+    <main id="main" hidden>
       <section class="hero section-shell" id="welcome" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>A little love note for your day</p>
-          <h1 id="hero-title">Happy 21st Birthday<br /><em>Angie My Love</em><span class="title-star" aria-hidden="true">✳</span></h1>
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>from my heart to yours</p>
+          <h1 class="message-page-title" id="hero-title" tabindex="-1">A birthday message,<br /><em>just for you</em></h1>
           <div class="birthday-message-card">
-            <span class="message-label">My birthday message to you</span>
             <p id="birthday-message"></p>
             <span class="message-flourish" aria-hidden="true">with all my love&nbsp; ♡</span>
           </div>
           <p class="anniversary-note"><span aria-hidden="true">✿</span><span id="anniversary-message"></span></p>
-          <button class="button button-primary start-button" id="start-surprise" type="button">
-            <span>Start the surprise</span><span class="button-arrow" aria-hidden="true">↘</span>
-          </button>
-          <p class="audio-status" id="audio-status" role="status" aria-live="polite" hidden></p>
         </div>
         <div class="hero-art" aria-label="A scrapbook of happy memories">
           <div class="hero-sun" aria-hidden="true"></div>
@@ -136,7 +145,7 @@
       </section>
     </main>
 
-    <footer class="site-footer"><span>made with love, just for you</span><span aria-hidden="true">♡</span><a href="#welcome">back to the beginning ↑</a></footer>
+    <footer class="site-footer" id="site-footer" hidden><span>made with love, just for you</span><span aria-hidden="true">♡</span><a href="#welcome">back to the beginning ↑</a></footer>
 
     <dialog class="photo-dialog" id="photo-dialog" aria-labelledby="photo-caption">
       <button class="dialog-close" id="dialog-close" type="button" aria-label="Close photo">×</button>
@@ -144,7 +153,7 @@
       <p id="photo-caption"></p>
     </dialog>
 
-    <audio id="birthday-audio" preload="auto" autoplay loop></audio>
+    <audio id="birthday-audio" preload="auto" loop></audio>
     <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

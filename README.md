@@ -21,7 +21,7 @@ pnpm build
 pnpm preview
 ```
 
-The production site is generated in `dist/`. The page attempts to start the birthday track on load. Browsers commonly block audible autoplay until a user gesture, so a visible prompt directs the visitor to the persistent **Play music** control when playback is denied.
+The production site is generated in `dist/`. The first screen shows the birthday title, **Open your surprise** button, and a brief hint. Tapping it starts the birthday song; the personal message and the rest of the story appear only after playback begins. This user gesture is necessary because browsers commonly block audible autoplay before interaction. If playback is denied, the title screen stays visible and offers a retry.
 
 ## Project map
 

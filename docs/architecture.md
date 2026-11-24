@@ -6,31 +6,26 @@ This document explains the current codebase for a future maintainer. The site is
 
 ```mermaid
 flowchart TD
-  A[Browser loads index.html] --> B[Vite loads src/main.js and src/styles.css]
-  B --> C[main.js imports src/content.js]
-  C --> D[Set welcome and closing copy]
-  C --> E[Render memories, timeline, and surprise cards]
-  C --> F[Set local photo and audio asset URLs]
-  D --> G[Birthday story is ready]
-  E --> G
-  F --> G
-  G --> H[Attempt to autoplay local birthday MP3]
-  H -->|Allowed| I[Update persistent music control to playing]
-  H -->|Blocked| I2[Show tap-to-play prompt]
-  I --> J{Visitor interaction}
-  I2 --> J
-  J -->|Start surprise / Play music| K[Play local MP3; start surprise also scrolls to memories]
-  J -->|Tap a memory| L[Open accessible photo dialog with caption]
-  J -->|Open letters / next| M[Show one friend letter at a time]
-  J -->|Tap a surprise card| N[Reveal its hidden note]
-  J -->|Celebrate| O[Play reduced-motion-aware confetti]
-  P[styles.css] --> G
-  P --> Q[Responsive scrapbook layout and accessibility styles]
+  A[Browser loads index.html] --> B[Show title-only welcome screen]
+  A --> C[Vite loads main.js, styles.css, and content.js]
+  C --> D[Prepare hidden story content and local assets]
+  B -->|Tap Open your surprise| E[Call audio.play within the tap gesture]
+  D --> E
+  E -->|Playback starts| F[Hide title screen; reveal message and story]
+  E -->|Playback rejected| R[Keep title screen visible and show retry prompt]
+  F --> G{Visitor interaction}
+  G -->|Play music| H[Play or pause the birthday track]
+  G -->|Tap a memory| I[Open accessible photo dialog with caption]
+  G -->|Open letters / next| J[Show one friend letter at a time]
+  G -->|Tap a surprise card| K[Reveal its hidden note]
+  G -->|Celebrate| L[Play reduced-motion-aware confetti]
+  M[styles.css] --> B
+  M --> N[Responsive scrapbook layout and accessibility styles]
 ```
 
 ## Files and responsibilities
 
-- **`index.html`** is the semantic page shell. It defines the header/navigation, six story sections, photo dialog, audio element, and accessible live status region. JavaScript fills the content areas without rebuilding the entire page.
+- **`index.html`** is the semantic page shell. It defines the title-only welcome screen, hidden header/story/footer, six story sections, photo dialog, audio element, and accessible live status region. JavaScript reveals the main story after music playback starts.
 - **`src/content.js`** is the single editing surface for personal copy and content records. Text is inserted with `textContent`, not interpreted as HTML. Memory records connect a local image, alt description, caption, and short label. Timeline records have date/title/note. Letter records have sender/message. Surprise records have icon/title/prompt/reveal text.
 - **`src/main.js`** imports the content and stylesheet, prefixes local asset paths with Vite’s `BASE_URL`, writes the welcome/anniversary/closing messages, and creates the repeated gallery, timeline, and card markup. It then connects the controls described below.
 - **`src/styles.css`** defines the palette, typography, scrapbook composition, responsive breakpoints, visible focus states, reduced-motion fallback, and animation styles. There are no runtime UI framework dependencies.
@@ -41,16 +36,17 @@ flowchart TD
 
 ## Page startup and content flow
 
-1. The browser opens `index.html`. Vite loads the JavaScript entry and CSS.
-2. `main.js` imports `content.js`; the welcome birthday headline is static HTML, while the personal birthday message, secondary December 1 anniversary note, and closing wish are populated from the content object.
-3. Rendering functions create photo buttons, timeline entries, and surprise cards from their corresponding arrays. The same local asset helper is used by the hero images, gallery, and music player so GitHub Pages subpaths resolve correctly.
-4. If `IntersectionObserver` is available and reduced motion is not requested, section content fades in as it enters view. Otherwise content is shown immediately.
+1. The browser opens `index.html` and immediately shows the birthday title, **Open your surprise** button, and a short hint. Header navigation, story content, and footer are hidden.
+2. `main.js` imports `content.js` and prepares the hidden story: it fills the personal birthday message, secondary December 1 anniversary note, and closing wish, then renders gallery, timeline, and surprise cards.
+3. When the visitor taps **Open your surprise**, the handler calls `audio.play()` directly in that user gesture. If its promise resolves, JavaScript hides the title screen, reveals the header, story, and footer, and focuses the message heading. If playback is rejected, the story stays hidden and an accessible retry prompt appears on the title screen.
+4. The same local asset helper serves the hero images, gallery, and music so GitHub Pages subpaths resolve correctly. If `IntersectionObserver` is available and reduced motion is not requested, story content fades in as it enters view. Otherwise it is shown immediately.
 5. Visitor actions update only the local page state. No information is sent to a service.
 
 ## Interactions
 
-- **Music startup:** after setting the local MP3 source, `main.js` immediately calls `audio.play()` as a best-effort autoplay attempt. Browsers may reject audible autoplay until the visitor interacts; on rejection, a visible accessible prompt explains that the persistent **Play music** control can start the track. The audio element also declares `autoplay`, `loop`, and eager preload as hints, but these do not override browser policy.
-- **Start the surprise:** calls `audio.play()` from the button click event, then scrolls to Memories. Successful playback dismisses the fallback prompt.
+- **Title screen:** only the birthday title, **Open your surprise** button, and short hint are visible at first. The personal message is intentionally on the next screen.
+- **Open your surprise:** the button calls `audio.play()` directly within the user gesture. When playback starts, JavaScript reveals the header, personal message, and the rest of the story, then focuses the message heading. If playback fails, the title screen remains visible and offers a retry.
+- **Music control:** after opening, a persistent header button plays or pauses the looping local track and updates its accessible label and pressed state.
 - **Music control:** a persistent header button plays or pauses the looping local track and updates its accessible label and pressed state.
 - **Memories:** each button opens the native `<dialog>` with the selected image and caption. The dialog supports Escape and has a close button; clicking the backdrop also closes it.
 - **Birthday letters:** the envelope starts closed. “Open the letters” reveals the first message. Previous/next controls update the single visible letter, sender, and `n of total` count. The final next action cycles back to the first note.
@@ -59,7 +55,7 @@ flowchart TD
 
 ## Responsive and accessibility behavior
 
-The CSS starts from the full page layout and adapts at tablet and phone widths. At phone sizes, navigation becomes a bottom pill, columns stack, gallery cards form a two-column grid, and surprise cards become full width. Buttons have focus indicators and accessible names; gallery thumbnails use empty alt text because their enclosing buttons provide names, while the enlarged image uses the memory alt description. The birthday message is visible immediately below the main birthday headline. The anniversary note is visually secondary. Reduced-motion preferences disable scroll/reveal/confetti movement. Typography uses local system font stacks; the site does not need a font CDN to render.
+The CSS starts from the title-only welcome screen and adapts at tablet and phone widths. At phone sizes, navigation becomes a bottom pill, columns stack, gallery cards form a two-column grid, and surprise cards become full width. Buttons have focus indicators and accessible names; gallery thumbnails use empty alt text because their enclosing buttons provide names, while the enlarged image uses the memory alt description. The personal birthday message is the first story screen after the visitor opens the surprise and the song begins. The anniversary note is visually secondary. Reduced-motion preferences disable scroll/reveal/confetti movement. Typography uses local system font stacks; the site does not need a font CDN to render.
 
 ## Build and hosting
 
