@@ -148,7 +148,8 @@ byId('letter-next').addEventListener('click', () => {
   showLetter(letterIndex === content.letters.length - 1 ? 0 : letterIndex + 1);
 });
 
-// Music starts only after an explicit tap, as mobile browsers may block autoplay.
+// Attempt audible autoplay when the page opens. Browsers may block this until a
+// user gesture, so show a visible prompt and keep the header play button ready.
 const audio = byId('birthday-audio');
 const musicToggle = byId('music-toggle');
 const audioStatus = byId('audio-status');
@@ -164,10 +165,11 @@ async function startMusic() {
   try {
     await audio.play();
     setMusicState(true);
-    audioStatus.textContent = 'Birthday music is playing.';
+    audioStatus.hidden = true;
   } catch {
     setMusicState(false);
-    audioStatus.textContent = 'Music could not start. Use the music button to try again.';
+    audioStatus.textContent = 'If the birthday song did not start, tap “Play music” in the header. Your browser may require a tap before it allows sound.';
+    audioStatus.hidden = false;
   }
 }
 musicToggle.addEventListener('click', () => {
@@ -176,6 +178,7 @@ musicToggle.addEventListener('click', () => {
 });
 audio.addEventListener('pause', () => setMusicState(false));
 audio.addEventListener('play', () => setMusicState(true));
+startMusic();
 byId('start-surprise').addEventListener('click', () => {
   startMusic();
   document.querySelector('#memories').scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });

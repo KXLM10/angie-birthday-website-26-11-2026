@@ -39,6 +39,7 @@ img { display: block; max-width: 100%; }
 .music-toggle { display: inline-flex; align-items: center; gap: .5rem; min-height: 42px; padding: 0 .95rem; border: 1px solid var(--line); border-radius: 99px; background: transparent; cursor: pointer; font-size: .72rem; transition: background .2s, color .2s, border-color .2s; }
 .music-toggle:hover, .music-toggle.is-playing { color: #fff; border-color: var(--rose); background: var(--rose); }
 .music-toggle-icon { font-size: 1.05rem; }
+.audio-status { max-width: 30rem; margin: .75rem 0 0; color: var(--rose-deep); font-size: .82rem; line-height: 1.5; }
 .section-shell { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
 .hero { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; min-height: min(790px, calc(100svh - 72px)); padding-top: 4.5rem; padding-bottom: 6.8rem; }
 .hero-copy { position: relative; z-index: 2; max-width: 600px; padding-bottom: 1rem; }

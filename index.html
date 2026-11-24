@@ -40,6 +40,7 @@
           <button class="button button-primary start-button" id="start-surprise" type="button">
             <span>Start the surprise</span><span class="button-arrow" aria-hidden="true">↘</span>
           </button>
+          <p class="audio-status" id="audio-status" role="status" aria-live="polite" hidden></p>
         </div>
         <div class="hero-art" aria-label="A scrapbook of happy memories">
           <div class="hero-sun" aria-hidden="true"></div>
@@ -143,8 +144,7 @@
       <p id="photo-caption"></p>
     </dialog>
 
-    <audio id="birthday-audio" preload="metadata" loop></audio>
-    <p class="visually-hidden" id="audio-status" aria-live="polite"></p>
+    <audio id="birthday-audio" preload="auto" autoplay loop></audio>
     <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

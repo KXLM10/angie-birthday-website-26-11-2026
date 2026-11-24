@@ -14,14 +14,18 @@ flowchart TD
   D --> G[Birthday story is ready]
   E --> G
   F --> G
-  G --> H{Visitor interaction}
-  H -->|Start surprise| I[Play local birthday MP3 and scroll to memories]
-  H -->|Tap a memory| J[Open accessible photo dialog with caption]
-  H -->|Open letters / next| K[Show one friend letter at a time]
-  H -->|Tap a surprise card| L[Reveal its hidden note]
-  H -->|Celebrate| M[Play reduced-motion-aware confetti]
-  N[styles.css] --> G
-  N --> O[Responsive scrapbook layout and accessibility styles]
+  G --> H[Attempt to autoplay local birthday MP3]
+  H -->|Allowed| I[Update persistent music control to playing]
+  H -->|Blocked| I2[Show tap-to-play prompt]
+  I --> J{Visitor interaction}
+  I2 --> J
+  J -->|Start surprise / Play music| K[Play local MP3; start surprise also scrolls to memories]
+  J -->|Tap a memory| L[Open accessible photo dialog with caption]
+  J -->|Open letters / next| M[Show one friend letter at a time]
+  J -->|Tap a surprise card| N[Reveal its hidden note]
+  J -->|Celebrate| O[Play reduced-motion-aware confetti]
+  P[styles.css] --> G
+  P --> Q[Responsive scrapbook layout and accessibility styles]
 ```
 
 ## Files and responsibilities
@@ -45,7 +49,8 @@ flowchart TD
 
 ## Interactions
 
-- **Start the surprise:** calls `audio.play()` from the click event, then scrolls to Memories. An audio status message is announced if playback fails. Audible autoplay is not attempted on initial page load.
+- **Music startup:** after setting the local MP3 source, `main.js` immediately calls `audio.play()` as a best-effort autoplay attempt. Browsers may reject audible autoplay until the visitor interacts; on rejection, a visible accessible prompt explains that the persistent **Play music** control can start the track. The audio element also declares `autoplay`, `loop`, and eager preload as hints, but these do not override browser policy.
+- **Start the surprise:** calls `audio.play()` from the button click event, then scrolls to Memories. Successful playback dismisses the fallback prompt.
 - **Music control:** a persistent header button plays or pauses the looping local track and updates its accessible label and pressed state.
 - **Memories:** each button opens the native `<dialog>` with the selected image and caption. The dialog supports Escape and has a close button; clicking the backdrop also closes it.
 - **Birthday letters:** the envelope starts closed. “Open the letters” reveals the first message. Previous/next controls update the single visible letter, sender, and `n of total` count. The final next action cycles back to the first note.

@@ -21,7 +21,7 @@ pnpm build
 pnpm preview
 ```
 
-The production site is generated in `dist/`. The music starts only after a user action because browsers commonly prevent pages from playing audible media on initial load.
+The production site is generated in `dist/`. The page attempts to start the birthday track on load. Browsers commonly block audible autoplay until a user gesture, so a visible prompt directs the visitor to the persistent **Play music** control when playback is denied.
 
 ## Project map
 
