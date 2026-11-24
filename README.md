@@ -39,7 +39,7 @@ docs/architecture.md        Logic flow, file responsibilities, and interaction d
 
 ## Personalize the page
 
-1. Edit `src/content.js`. Replace the bracketed birthday, closing, and final anniversary messages, memory captions, timeline entries, friend letters, and surprise-card copy.
+1. Edit `src/content.js` to personalize the birthday, closing, and final anniversary messages, memory captions, timeline entries, friend letters, and surprise-card copy.
 2. Put final photos in `public/assets/photos/`, then update the matching `image` paths and `alt` descriptions in `src/content.js`. Keep images reasonably sized for mobile data.
 3. Put the Happy Birthday MP3 at `public/assets/audio/happy-birthday.mp3`. The included track is **“Happy Birthday Song” by alexander**, from [Orange Free Sounds](https://orangefreesounds.com/happy-birthday-song/), under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). It is stored locally so playback does not depend on a third-party media host. The license requires attribution and limits use to noncommercial purposes; keep this in mind if the site is ever reused commercially.
 4. Re-run `pnpm build` after changing content/assets.
