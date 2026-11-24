@@ -4,7 +4,7 @@ export const content = {
   birthdayMessage:
     '[Your heartfelt birthday message goes here. Replace this placeholder with your words for Angie.]',
   anniversaryMessage:
-    'And a little early… Happy Anniversary for December 1.',
+    '[Add your final anniversary wish here.]',
   closingMessage:
     '[Add one last birthday wish here. Keep it short, sweet, and completely yours.]',
   memories: [
