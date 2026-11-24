@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 640">
+  <defs><linearGradient id="g" x2=".8" y2="1"><stop stop-color="#d4d7c2"/><stop offset="1" stop-color="#a9b7a1"/></linearGradient></defs>
+  <rect width="720" height="640" fill="url(#g)"/><circle cx="180" cy="120" r="110" fill="#f4dfb1" opacity=".7"/>
+  <path d="M0 410 Q170 325 330 410 T720 380 V640 H0Z" fill="#788f7b"/><path d="M0 495 Q210 440 430 500 T720 455 V640 H0Z" fill="#647c6c"/>
+  <path d="M80 470 Q120 360 150 435 Q180 340 225 457 M510 420 Q555 300 585 400 Q620 305 660 430" fill="none" stroke="#f3dfbd" stroke-width="10" opacity=".8"/>
+  <text x="360" y="295" text-anchor="middle" fill="#fffaf2" font-family="Georgia,serif" font-size="34" font-style="italic">your photo goes here</text>
+  <text x="360" y="340" text-anchor="middle" fill="#fffaf2" font-family="Arial,sans-serif" font-size="14" letter-spacing="4">MEMORY 02</text>
+</svg>

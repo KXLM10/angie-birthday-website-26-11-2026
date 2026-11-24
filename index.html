@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f0e7" />
+    <meta name="description" content="A little birthday story made with love for Angie." />
+    <title>For Angie, With Love</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the birthday story</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="#welcome" aria-label="For Angie, with love — home">
+        <span class="wordmark-heart" aria-hidden="true">♥</span>
+        <span>for Angie, with love</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#memories">Memories</a>
+        <a href="#our-year">Our year</a>
+        <a href="#letters">Letters</a>
+      </nav>
+      <button class="music-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Play birthday music">
+        <span class="music-toggle-icon" aria-hidden="true">♫</span>
+        <span class="music-toggle-label">Play music</span>
+      </button>
+    </header>
+
+    <main id="main">
+      <section class="hero section-shell" id="welcome" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>A little love note for your day</p>
+          <h1 id="hero-title">Happy 21st Birthday<br /><em>Angie My Love</em><span class="title-star" aria-hidden="true">✳</span></h1>
+          <div class="birthday-message-card">
+            <span class="message-label">My birthday message to you</span>
+            <p id="birthday-message"></p>
+            <span class="message-flourish" aria-hidden="true">with all my love&nbsp; ♡</span>
+          </div>
+          <p class="anniversary-note"><span aria-hidden="true">✿</span><span id="anniversary-message"></span></p>
+          <button class="button button-primary start-button" id="start-surprise" type="button">
+            <span>Start the surprise</span><span class="button-arrow" aria-hidden="true">↘</span>
+          </button>
+        </div>
+        <div class="hero-art" aria-label="A scrapbook of happy memories">
+          <div class="hero-sun" aria-hidden="true"></div>
+          <div class="hero-note hero-note-top">my favourite<br />kind of magic</div>
+          <figure class="hero-photo hero-photo-back">
+            <img src="" data-asset="assets/photos/memory-2.svg" alt="Placeholder for one of your favorite photos together" />
+            <figcaption>little moments</figcaption>
+          </figure>
+          <figure class="hero-photo hero-photo-front">
+            <img src="" data-asset="assets/photos/memory-1.svg" alt="Placeholder for a favorite birthday memory" />
+            <figcaption>you + me</figcaption>
+          </figure>
+          <span class="hero-doodle hero-doodle-heart" aria-hidden="true">♡</span>
+          <span class="hero-doodle hero-doodle-spark" aria-hidden="true">✳</span>
+          <div class="hero-note hero-note-bottom">every day<br />with you ✿</div>
+        </div>
+        <a class="scroll-cue" href="#memories"><span>keep going</span><span aria-hidden="true">↓</span></a>
+      </section>
+
+      <section class="story-section memories-section" id="memories" aria-labelledby="memories-title">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="section-number">01</span> little snapshots</p>
+            <h2 id="memories-title">A year in <em>us</em></h2>
+            <p class="section-intro">A few favorite frames from a year full of you. Tap any photo to take a closer look.</p>
+          </div>
+          <div class="memory-grid" id="memory-grid" aria-label="Photo memories"></div>
+          <p class="handwritten gallery-note">more memories, more reasons to smile <span aria-hidden="true">↗</span></p>
+        </div>
+      </section>
+
+      <section class="story-section year-section" id="our-year" aria-labelledby="year-title">
+        <div class="section-shell year-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="section-number">02</span> the little things</p>
+            <h2 id="year-title">Our year,<br /><em>piece by piece</em></h2>
+            <p class="section-intro">The dates are lovely. The ordinary moments with you are my favorites.</p>
+          </div>
+          <div class="timeline" id="timeline"></div>
+          <div class="year-stamp" aria-hidden="true"><span>365</span><small>days of<br />loving you</small></div>
+        </div>
+      </section>
+
+      <section class="story-section letters-section" id="letters" aria-labelledby="letters-title">
+        <div class="section-shell letters-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="section-number">03</span> a little love, from everyone</p>
+            <h2 id="letters-title">Birthday <em>letters</em></h2>
+            <p class="section-intro">Your people have something to tell you. Open the envelope and read their notes one by one.</p>
+          </div>
+          <div class="letter-book reveal" id="letter-book">
+            <div class="letter-envelope" id="letter-envelope">
+              <span class="envelope-stamp" aria-hidden="true">♡</span>
+              <span class="envelope-line" aria-hidden="true"></span>
+              <p>sealed with love</p>
+            </div>
+            <div class="letter-content" id="letter-content" hidden aria-live="polite" aria-atomic="true">
+              <p class="letter-count" id="letter-count"></p>
+              <blockquote id="letter-text"></blockquote>
+              <p class="letter-sender" id="letter-sender"></p>
+            </div>
+            <div class="letter-controls">
+              <button class="button button-primary" id="open-letters" type="button">Open the letters <span aria-hidden="true">↗</span></button>
+              <div class="letter-navigation" id="letter-navigation" hidden>
+                <button class="round-button" id="letter-previous" type="button" aria-label="Previous letter">←</button>
+                <button class="button button-outline" id="letter-next" type="button">Next letter <span aria-hidden="true">→</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section surprises-section" id="surprises" aria-labelledby="surprises-title">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="section-number">04</span> just between us</p>
+            <h2 id="surprises-title">Tiny things I <em>adore</em></h2>
+            <p class="section-intro">Tap a card. There’s a little something tucked inside each one.</p>
+          </div>
+          <div class="surprise-grid" id="surprise-grid"></div>
+        </div>
+      </section>
+
+      <section class="closing-section" id="closing" aria-labelledby="closing-title">
+        <div class="closing-scribbles" aria-hidden="true"><span>♡</span><span>✳</span><span>♡</span></div>
+        <div class="closing-inner reveal">
+          <p class="eyebrow">one more thing, birthday girl</p>
+          <h2 id="closing-title">The best part<br />is <em>you.</em></h2>
+          <p id="closing-message" class="closing-message"></p>
+          <button class="button button-light" id="celebrate-button" type="button">Make a little magic <span aria-hidden="true">✳</span></button>
+          <p class="closing-signoff">Happy birthday, my love <span aria-hidden="true">♥</span></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>made with love, just for you</span><span aria-hidden="true">♡</span><a href="#welcome">back to the beginning ↑</a></footer>
+
+    <dialog class="photo-dialog" id="photo-dialog" aria-labelledby="photo-caption">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Close photo">×</button>
+      <img id="dialog-image" src="" alt="" />
+      <p id="photo-caption"></p>
+    </dialog>
+
+    <audio id="birthday-audio" preload="metadata" loop></audio>
+    <p class="visually-hidden" id="audio-status" aria-live="polite"></p>
+    <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
