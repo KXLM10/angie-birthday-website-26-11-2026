@@ -68,8 +68,6 @@ h1 em, h2 em { color: var(--rose); font-weight: 500; }
 .message-label { display: block; margin-bottom: .55rem; color: var(--rose-deep); font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .birthday-message-card p { margin: 0; color: #514741; font-family: var(--serif); font-size: clamp(1rem, 1.65vw, 1.25rem); line-height: 1.7; }
 .message-flourish { display: block; margin-top: .65rem; color: var(--muted); font-family: var(--hand); font-size: 1.2rem; text-align: right; }
-.anniversary-note { display: flex; align-items: flex-start; gap: .6rem; max-width: 440px; margin: 1rem 0 1.45rem; color: #7b7166; font-size: .8rem; line-height: 1.6; }
-.anniversary-note > span:first-child { color: var(--green); font-size: 1.1rem; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 1.2rem; min-height: 51px; padding: .8rem 1.25rem; border-radius: 2px; cursor: pointer; font-size: .78rem; font-weight: 600; letter-spacing: .025em; text-decoration: none; transition: transform .2s, background .2s, color .2s; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { color: #fff; border: 1px solid var(--rose-deep); background: var(--rose-deep); }
@@ -163,6 +161,14 @@ h2 { margin-bottom: 1.1rem; font-size: clamp(2.8rem, 5.5vw, 5rem); line-height: 
 .button-light:hover { color: #fff; background: transparent; }
 .closing-signoff { margin: 2rem 0 0; color: #e8c9b8; font-family: var(--hand); font-size: 1.5rem; }
 .closing-signoff span { color: #f3aaa0; }
+.anniversary-section { display: grid; place-items: center; min-height: min(760px, 90svh); padding: clamp(5rem, 11vw, 8rem) 1.5rem; overflow: hidden; text-align: center; background: radial-gradient(ellipse at 12% 18%, rgba(232, 199, 117, .2), transparent 35%), radial-gradient(ellipse at 88% 86%, rgba(184, 109, 104, .18), transparent 38%), var(--paper); }
+.anniversary-inner { width: min(100%, 700px); }
+.anniversary-section .eyebrow { justify-content: center; }
+.anniversary-section h2 { margin: 0 0 1.2rem; font-size: clamp(3rem, 8vw, 6.2rem); line-height: 1.02; }
+.anniversary-section h2 em { color: var(--rose-deep); }
+.anniversary-date { margin: 0 0 1.5rem; color: var(--green); font-size: .77rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.anniversary-date span { padding-left: .35rem; color: var(--rose); }
+.anniversary-message { max-width: 34rem; margin: 0 auto; color: var(--muted); font-family: var(--serif); font-size: clamp(1.1rem, 2.2vw, 1.35rem); line-height: 1.8; }
 .closing-scribbles span { position: absolute; color: rgba(248, 239, 226, .14); font-size: 8rem; }
 .closing-scribbles span:nth-child(1) { top: 13%; left: 10%; transform: rotate(-20deg); }
 .closing-scribbles span:nth-child(2) { top: 23%; right: 12%; color: rgba(229, 197, 159, .22); font-size: 5rem; }
