@@ -56,7 +56,7 @@ flowchart TD
 
 ## Responsive and accessibility behavior
 
-The CSS starts from the title-only welcome screen and adapts at tablet and phone widths. At phone sizes, navigation becomes a bottom pill, columns stack, gallery cards form a two-column grid, and surprise cards become full width. Buttons have focus indicators and accessible names; gallery thumbnails use empty alt text because their enclosing buttons provide names, while the enlarged image uses the memory alt description. The personal birthday message is the first story screen after the visitor opens the surprise and the song begins. The anniversary wish has its own final screen after the birthday closing. Reduced-motion preferences disable scroll/reveal/confetti movement. Typography uses local system font stacks; the site does not need a font CDN to render.
+The CSS starts from the title-only welcome screen and adapts at tablet and phone widths. The long birthday message uses a wider column on desktop and tablet and the full content width on phones. At phone sizes, navigation becomes a bottom pill, columns stack, gallery cards form a two-column grid, and surprise cards become full width. Buttons have focus indicators and accessible names; gallery thumbnails use empty alt text because their enclosing buttons provide names, while the enlarged image uses the memory alt description. The personal birthday message is the first story screen after the visitor opens the surprise and the song begins. The anniversary wish has its own final screen after the birthday closing. Reduced-motion preferences disable scroll/reveal/confetti movement. Typography uses local system font stacks; the site does not need a font CDN to render.
 
 ## Build and hosting
 
