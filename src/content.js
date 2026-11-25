@@ -27,10 +27,51 @@ I love you endlessly, my birthday girl! Happiest birthday, Angie! ❤️❤️�
   closingMessage:
     '[Add one last birthday wish here. Keep it short, sweet, and completely yours.]',
   memories: [
-    { image: 'assets/photos/memory-1.svg', alt: 'Placeholder scrapbook art for memory one', caption: '[Add a photo and the story behind this favorite moment.]', label: 'the little things' },
-    { image: 'assets/photos/memory-2.svg', alt: 'Placeholder scrapbook art for memory two', caption: '[Add a photo and a few words about where you were.]', label: 'our happy place' },
-    { image: 'assets/photos/memory-3.svg', alt: 'Placeholder scrapbook art for memory three', caption: '[Add a photo and a detail only the two of you remember.]', label: 'that one day' },
-    { image: 'assets/photos/memory-4.svg', alt: 'Placeholder scrapbook art for memory four', caption: '[Add another photo and a little note for Angie.]', label: 'my favorite view' },
+    {
+      title: 'Always Going the Distance Just for You',
+      photos: [
+        { image: 'assets/photos/memories/always-going-the-distance-just-for-you.jpeg', alt: 'A photo in the “Always Going the Distance Just for You” memory group', caption: 'Always Going the Distance Just for You' },
+      ],
+    },
+    {
+      title: 'Little Things from You That I Cherish a Lot',
+      photos: [
+        { image: 'assets/photos/memories/little-things-from-you-that-i-cherish-a-lot-1.jpeg', alt: 'First photo in the “Little Things from You That I Cherish a Lot” memory group', caption: 'Little Things from You That I Cherish a Lot · 1 of 3' },
+        { image: 'assets/photos/memories/little-things-from-you-that-i-cherish-a-lot-2.jpeg', alt: 'Second photo in the “Little Things from You That I Cherish a Lot” memory group', caption: 'Little Things from You That I Cherish a Lot · 2 of 3' },
+        { image: 'assets/photos/memories/little-things-from-you-that-i-cherish-a-lot-3.jpeg', alt: 'Third photo in the “Little Things from You That I Cherish a Lot” memory group', caption: 'Little Things from You That I Cherish a Lot · 3 of 3' },
+      ],
+    },
+    {
+      title: 'Memories of This Year',
+      photos: [
+        { image: 'assets/photos/memories/memories-of-this-year-1.jpeg', alt: 'First photo in the “Memories of This Year” memory group', caption: 'Memories of This Year · 1 of 4' },
+        { image: 'assets/photos/memories/memories-of-this-year-2.jpeg', alt: 'Second photo in the “Memories of This Year” memory group', caption: 'Memories of This Year · 2 of 4' },
+        { image: 'assets/photos/memories/memories-of-this-year-3.jpeg', alt: 'Third photo in the “Memories of This Year” memory group', caption: 'Memories of This Year · 3 of 4' },
+        { image: 'assets/photos/memories/memories-of-this-year-4.jpeg', alt: 'Fourth photo in the “Memories of This Year” memory group', caption: 'Memories of This Year · 4 of 4' },
+      ],
+    },
+    {
+      title: 'My Most Loved Gift from You',
+      photos: [
+        { image: 'assets/photos/memories/my-most-loved-gift-from-you.jpeg', alt: 'A photo in the “My Most Loved Gift from You” memory group', caption: 'My Most Loved Gift from You' },
+      ],
+    },
+    {
+      title: 'My Pookie',
+      photos: [
+        { image: 'assets/photos/memories/my-pookie.jpeg', alt: 'A photo in the “My Pookie” memory group', caption: 'My Pookie' },
+      ],
+    },
+    {
+      title: 'Our First Time Together',
+      photos: [
+        { image: 'assets/photos/memories/our-first-time-together-1.jpeg', alt: 'First photo in the “Our First Time Together” memory group', caption: 'Our First Time Together · 1 of 5' },
+        { image: 'assets/photos/memories/our-first-time-together-2.jpeg', alt: 'Second photo in the “Our First Time Together” memory group', caption: 'Our First Time Together · 2 of 5' },
+        { image: 'assets/photos/memories/our-first-time-together-3.jpeg', alt: 'Third photo in the “Our First Time Together” memory group', caption: 'Our First Time Together · 3 of 5' },
+        { image: 'assets/photos/memories/our-first-time-together-4.jpeg', alt: 'Fourth photo in the “Our First Time Together” memory group', caption: 'Our First Time Together · 4 of 5' },
+        { image: 'assets/photos/memories/our-first-time-together-5.jpeg', alt: 'Fifth photo in the “Our First Time Together” memory group', caption: 'Our First Time Together · 5 of 5' },
+      ],
+    },
   ],
   timeline: [
     { date: '[A favorite date]', title: '[A moment you still talk about]', note: '[Add a short memory or inside joke.]' },

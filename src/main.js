@@ -17,31 +17,49 @@ document.querySelectorAll('[data-asset]').forEach((image) => {
 });
 
 function renderMemories() {
-  const grid = byId('memory-grid');
-  content.memories.forEach((memory, index) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = `memory-card memory-card-${index + 1} reveal`;
-    button.setAttribute('aria-label', `Open photo: ${memory.label}`);
-    button.dataset.image = memory.image;
-    button.dataset.alt = memory.alt;
-    button.dataset.caption = memory.caption;
+  const groups = byId('memory-grid');
+  content.memories.forEach((group, groupIndex) => {
+    const section = document.createElement('section');
+    section.className = 'memory-group reveal';
+    section.setAttribute('aria-labelledby', `memory-group-title-${groupIndex + 1}`);
 
-    const image = document.createElement('img');
-    image.src = assetUrl(memory.image);
-    image.alt = '';
-    image.loading = 'lazy';
-    const caption = document.createElement('span');
-    caption.className = 'memory-label';
-    caption.textContent = memory.label;
-    const marker = document.createElement('span');
-    marker.className = 'memory-open';
-    marker.setAttribute('aria-hidden', 'true');
-    marker.textContent = '↗';
+    const heading = document.createElement('h3');
+    heading.className = 'memory-group-title';
+    heading.id = `memory-group-title-${groupIndex + 1}`;
+    heading.textContent = group.title;
 
-    button.append(image, caption, marker);
-    button.addEventListener('click', () => openPhoto(memory));
-    grid.append(button);
+    const grid = document.createElement('div');
+    grid.className = `memory-grid${group.photos.length === 1 ? ' memory-grid-single' : ''}`;
+    grid.setAttribute('aria-label', `${group.title} photos`);
+
+    group.photos.forEach((memory, photoIndex) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'memory-card';
+      button.setAttribute('aria-label', `Open photo ${photoIndex + 1} from ${group.title}`);
+      button.dataset.image = memory.image;
+      button.dataset.alt = memory.alt;
+      button.dataset.caption = memory.caption;
+
+      const image = document.createElement('img');
+      image.src = assetUrl(memory.image);
+      image.alt = '';
+      image.loading = 'lazy';
+      const caption = document.createElement('span');
+      caption.className = 'memory-label';
+      caption.textContent = `Photo ${photoIndex + 1}`;
+      const marker = document.createElement('span');
+      marker.className = 'memory-open';
+      marker.setAttribute('aria-hidden', 'true');
+      marker.textContent = '↗';
+
+      button.append(image, caption, marker);
+      button.addEventListener('click', () => openPhoto(memory));
+      grid.append(button);
+    });
+
+    section.append(heading, grid);
+    groups.append(section);
   });
 }
 
@@ -118,6 +136,13 @@ function openPhoto(memory) {
   byId('photo-caption').textContent = memory.caption;
   photoDialog.showModal();
 }
+document.querySelectorAll('.hero-photo').forEach((photo) => {
+  photo.addEventListener('click', () => openPhoto({
+    image: photo.dataset.image,
+    alt: photo.dataset.alt,
+    caption: photo.dataset.caption,
+  }));
+});
 byId('dialog-close').addEventListener('click', () => photoDialog.close());
 photoDialog.addEventListener('click', (event) => {
   if (event.target === photoDialog) photoDialog.close();
