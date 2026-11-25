@@ -122,6 +122,9 @@ h2 { margin-bottom: 1.1rem; font-size: clamp(2.8rem, 5.5vw, 5rem); line-height: 
 .timeline-date { margin-bottom: .5rem; color: var(--rose-deep); font-size: .67rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .timeline-copy h3 { margin-bottom: .5rem; font-family: var(--serif); font-size: 1.45rem; font-weight: 500; }
 .timeline-copy > p:last-child { max-width: 420px; margin-bottom: 0; color: var(--muted); font-size: .82rem; line-height: 1.75; }
+.timeline-photo-button { display: block; width: min(100%, 280px); margin-top: 1.2rem; padding: 8px; border: 0; background: #fffdf9; box-shadow: 0 10px 24px rgba(68, 51, 39, .13); cursor: zoom-in; transition: transform .25s, box-shadow .25s; }
+.timeline-photo-button:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(68, 51, 39, .18); }
+.timeline-photo-button img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; }
 .timeline-index { color: #b8a99b; font-family: var(--serif); font-size: 1.2rem; font-style: italic; }
 .year-stamp { position: absolute; right: 2%; bottom: -3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 125px; height: 125px; border: 1px solid #cbbca9; border-radius: 50%; color: var(--green); transform: rotate(10deg); }
 .year-stamp span { font-family: var(--serif); font-size: 2rem; }

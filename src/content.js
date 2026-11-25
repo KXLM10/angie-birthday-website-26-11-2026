@@ -22,10 +22,8 @@ Happy 21st Birthday once again, my sweetheart! May this year be filled with happ
 Here's to you, to us, to the memories we've made, and to all the beautiful moments still waiting for us! 🥂❤️
 
 I love you endlessly, my birthday girl! Happiest birthday, Angie! ❤️❤️❤️🎂🥳😘`,
-  anniversaryMessage:
-    '[Add your final anniversary wish here.]',
-  closingMessage:
-    '[Add one last birthday wish here. Keep it short, sweet, and completely yours.]',
+  anniversaryMessage: '',
+  closingMessage: 'I LOVE YOUUUUU!!!!',
   memories: [
     {
       title: 'Always Going the Distance Just for You',
@@ -74,9 +72,23 @@ I love you endlessly, my birthday girl! Happiest birthday, Angie! ❤️❤️�
     },
   ],
   timeline: [
-    { date: '[A favorite date]', title: '[A moment you still talk about]', note: '[Add a short memory or inside joke.]' },
-    { date: '[A little later]', title: '[A day that felt like you two]', note: '[Add a trip, milestone, or ordinary day worth keeping.]' },
-    { date: '[One more favorite]', title: '[A moment that made you smile]', note: '[Add another memory from your year together.]' },
+    {
+      date: 'Vietnam trip',
+      title: 'Vietnam Trip and the wonderful memories we made there.',
+      note: 'We found a lot of our neighbors there.',
+    },
+    {
+      date: 'Ha Long Bay',
+      title: 'A sunset on the way back',
+      note: 'The romantic moment we shared on the deck of the boat, watching the sunset, on the way back from our Ha Long Bay adventures.',
+    },
+    {
+      date: 'A birthday wish from you',
+      title: 'Your birthday wish to me was sooo beautiful, and I really loved it.',
+      image: 'assets/photos/timeline-birthday-wish.jpeg',
+      alt: 'A birthday memory photo of Angie and her boyfriend together',
+      caption: 'Your birthday wish to me was sooo beautiful, and I really loved it.',
+    },
   ],
   letters: [
     {
@@ -127,9 +139,9 @@ Wishing you all the best and wish that next bday you will be here so we can cele
     },
   ],
   surprises: [
-    { icon: '✿', title: 'A tiny reminder', prompt: 'tap to open', reveal: '[Add one thing you love about her.]' },
-    { icon: '♡', title: 'Our little joke', prompt: 'tap to open', reveal: '[Add an inside joke or a funny shared memory.]' },
-    { icon: '✳', title: 'One more thing', prompt: 'tap to open', reveal: '[Add a favorite detail or a small promise for the year ahead.]' },
+    { icon: '✿', title: 'A tiny reminder', prompt: 'tap to open', reveal: 'I am always here for you, no matter what!' },
+    { icon: '♡', title: 'Things I Wanna Do with You', prompt: 'tap to open', reveal: 'Watch movies, play badminton and football, play board games, teach you how to drive a car and ride a bike, and go on crazy adventures with you.' },
+    { icon: '✳', title: 'One more thing', prompt: 'tap to open', reveal: 'We will be together again, baby.' },
   ],
   music: {
     file: 'assets/audio/happy-birthday.mp3',
