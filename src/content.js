@@ -133,9 +133,9 @@ Wishing you all the best and wish that next bday you will be here so we can cele
   ],
   music: {
     file: 'assets/audio/happy-birthday.mp3',
-    track: 'Happy Birthday Song',
-    artist: 'alexander',
-    source: 'https://orangefreesounds.com/happy-birthday-song/',
-    license: 'CC BY-NC 4.0',
+    track: 'Happy Birthday background music',
+    artist: 'CrystalEyeOfficial',
+    source: 'https://pixabay.com/music/special-occasions-happy-birthday-background-music-309767/',
+    license: 'Pixabay Content License',
   },
 };

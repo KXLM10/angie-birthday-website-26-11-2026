@@ -33,7 +33,7 @@ flowchart TD
 - **`vite.config.js`** sets the base URL to `/angie-birthday-website-26-11-2026/`, required for assets and module URLs when hosted under the GitHub Pages repository path.
 - **`.github/workflows/deploy.yml`** installs the locked pnpm dependencies, builds `dist/`, and deploys it to GitHub Pages from the repository’s default branch. GitHub Pages must be configured to use **GitHub Actions** as its source.
 - **`public/assets/photos/`** contains three supplied JPEGs displayed as an interactive scrapbook collage beside the main birthday message and 15 JPEGs in six titled memories groups. Hero-photo paths, alt descriptions, and captions are set in `index.html`; gallery group titles, ordered photo paths, alt descriptions, and captions are configured in `src/content.js`. Four older SVG placeholders remain in the directory but are no longer used by the gallery.
-- **`public/assets/audio/happy-birthday.mp3`** is the locally hosted background track. Its attribution and CC BY-NC 4.0 terms are recorded in the root README and `public/assets/audio/ATTRIBUTION.txt`.
+- **`public/assets/audio/happy-birthday.mp3`** is the locally hosted background track, “Happy Birthday background music” by CrystalEyeOfficial. It is available under the Pixabay Content License. Source and license notes are recorded in the root README and `public/assets/audio/ATTRIBUTION.txt`.
 
 ## Page startup and content flow
 
