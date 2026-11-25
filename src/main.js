@@ -9,7 +9,9 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 document.documentElement.classList.add('js');
 document.title = 'For Angie, With Love';
 byId('birthday-message').textContent = content.birthdayMessage;
-byId('anniversary-message').textContent = content.anniversaryMessage;
+const anniversaryMessage = byId('anniversary-message');
+anniversaryMessage.textContent = content.anniversaryMessage;
+anniversaryMessage.hidden = !content.anniversaryMessage;
 byId('closing-message').textContent = content.closingMessage;
 
 document.querySelectorAll('[data-asset]').forEach((image) => {
@@ -78,9 +80,26 @@ function renderTimeline() {
     date.textContent = moment.date;
     const heading = document.createElement('h3');
     heading.textContent = moment.title;
-    const note = document.createElement('p');
-    note.textContent = moment.note;
-    copy.append(date, heading, note);
+    copy.append(date, heading);
+    if (moment.note) {
+      const note = document.createElement('p');
+      note.textContent = moment.note;
+      copy.append(note);
+    }
+    if (moment.image) {
+      const photoButton = document.createElement('button');
+      photoButton.type = 'button';
+      photoButton.className = 'timeline-photo-button';
+      photoButton.setAttribute('aria-label', `Open photo: ${moment.caption}`);
+
+      const image = document.createElement('img');
+      image.src = assetUrl(moment.image);
+      image.alt = '';
+      image.loading = 'lazy';
+      photoButton.append(image);
+      photoButton.addEventListener('click', () => openPhoto(moment));
+      copy.append(photoButton);
+    }
     const stamp = document.createElement('span');
     stamp.className = 'timeline-index';
     stamp.textContent = String(index + 1).padStart(2, '0');
