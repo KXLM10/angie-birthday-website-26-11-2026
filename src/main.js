@@ -162,6 +162,11 @@ document.querySelectorAll('.hero-photo').forEach((photo) => {
     caption: photo.dataset.caption,
   }));
 });
+byId('closing-photo').addEventListener('click', () => openPhoto({
+  image: 'assets/photos/birthday-girl.jpeg',
+  alt: 'Our hands held together beside a window at night',
+  caption: 'A little moment, just us.',
+}));
 byId('dialog-close').addEventListener('click', () => photoDialog.close());
 photoDialog.addEventListener('click', (event) => {
   if (event.target === photoDialog) photoDialog.close();
